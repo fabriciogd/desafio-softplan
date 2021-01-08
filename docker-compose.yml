@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  gateway:
+    image: ${DOCKER_REGISTRY-}gateway
+    build:
+      context: .
+      dockerfile: Gateway/Dockerfile
+
+  firstapi:
+    image: ${DOCKER_REGISTRY}firstapi
+    build:
+      context: .
+      dockerfile: FirstApi/Dockerfile
+
+  secondapi:
+    image: ${DOCKER_REGISTRY}secondapi
+    build:
+      context: .
+      dockerfile: SecondApi/Dockerfile

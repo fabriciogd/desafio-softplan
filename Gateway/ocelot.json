@@ -1,0 +1,79 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:7000"
+  },
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "firstapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/firstapi/",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "firstapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/firstapi/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ],
+      "SwaggerKey": "firstapi"
+    },
+    {
+      "DownstreamPathTemplate": "/",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "secondapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/secondapi/",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "secondapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/secondapi/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ],
+      "SwaggerKey": "SecondApi"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "firstapi",
+      "Config": [
+        {
+          "Name": "First Api",
+          "Version": "v1",
+          "Url": "http://firstapi:80/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "SecondApi",
+      "Config": [
+        {
+          "Name": "Second Api",
+          "Version": "v1",
+          "Url": "http://secondapi:80/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}
