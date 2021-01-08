@@ -17,3 +17,5 @@ Para criar um gateway de API, foi utilizado a biblioteca Ocelot, https://github.
 Para acessar o swagger, http://localhost:7000/swagger
 
 Foi criado uma camada de CrossCutting para criação do serviço de chamada externas de apis, visto que a API 2 precisa executar uma consulta na API 1.
+
+A camada de aplicação fornece os serviços para uso das API's, através do uso da inversão de dependência.
