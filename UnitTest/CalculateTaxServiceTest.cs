@@ -20,5 +20,20 @@ namespace UnitTest
 
             Assert.Equal(correctFinalValue, finalValue);
         }
+
+        [Fact]
+        public void Call_Calculate_Tax_ShouldReturn_IncorrectValue()
+        {
+            var calculateTaxService = new CalculateTaxService();
+
+            double initialValue = 200;
+            int months = 5;
+            double tax = 0.01;
+
+            var finalValue = calculateTaxService.CalculateTax(initialValue, months, tax);
+            double correctFinalValue = 105.1;
+
+            Assert.NotEqual(correctFinalValue, finalValue);
+        }
     }
 }
